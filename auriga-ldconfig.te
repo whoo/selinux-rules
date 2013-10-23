@@ -1,0 +1,11 @@
+
+module auriga-ldconfig 1.0;
+
+require {
+	type devpts_t;
+	type ldconfig_t;
+	class chr_file { read write };
+}
+
+#============= ldconfig_t ==============
+allow ldconfig_t devpts_t:chr_file { read write };

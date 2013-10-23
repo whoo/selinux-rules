@@ -1,0 +1,11 @@
+
+module auriga-avahi 1.0;
+
+require {
+	type avahi_t;
+	type init_t;
+	class dbus send_msg;
+}
+
+#============= avahi_t ==============
+allow avahi_t init_t:dbus send_msg;
