@@ -9,9 +9,5 @@ require {
 }
 
 #============= pulseaudio_t ==============
-allow pulseaudio_t initrc_state_t:file getattr;
-allow pulseaudio_t initrc_state_t:file open;
-allow pulseaudio_t initrc_state_t:file read;
-allow pulseaudio_t tmpfs_t:file getattr;
-allow pulseaudio_t tmpfs_t:file open;
-allow pulseaudio_t tmpfs_t:file read;
+allow pulseaudio_t initrc_state_t:file { getattr open read };
+allow pulseaudio_t tmpfs_t:file { getattr open read };

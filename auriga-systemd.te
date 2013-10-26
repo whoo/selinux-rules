@@ -14,6 +14,4 @@ require {
 allow systemd_hostnamed_t initrc_t:dbus send_msg;
 
 #============= systemd_tmpfiles_t ==============
-allow systemd_tmpfiles_t var_log_t:dir relabelfrom;
-allow systemd_tmpfiles_t var_log_t:dir relabelto;
-allow systemd_tmpfiles_t var_log_t:dir setattr;
+allow systemd_tmpfiles_t var_log_t:dir { relabelfrom relabelto setattr };
