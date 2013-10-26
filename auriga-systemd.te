@@ -2,10 +2,10 @@
 module auriga-systemd 1.0;
 
 require {
-	type var_log_t;
-	type systemd_hostnamed_t;
 	type initrc_t;
+	type systemd_hostnamed_t;
 	type systemd_tmpfiles_t;
+	type var_log_t;
 	class dbus send_msg;
 	class dir setattr;
 }
