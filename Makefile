@@ -1,4 +1,4 @@
-all: auriga-avahi.pp auriga-ldconfig.pp auriga-pulseaudio.pp auriga-systemd.pp
+all: auriga-avahi.pp auriga-ldconfig.pp auriga-pulseaudio.pp auriga-systemd-hostnamed.pp auriga-systemd-tmpfiles.pp
 	@echo "Now run (as root):"
 	@echo ""
 	@echo "semodule -i auriga-avahi.pp"
