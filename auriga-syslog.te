@@ -1,0 +1,14 @@
+# Sometimes it's handy to store syslog entries on a tmpfs filesystem
+
+module auriga-syslog 1.0;
+
+require {
+	type syslogd_t;
+	type tmpfs_t;
+	class dir { read write create add_name remove_name };
+	class file { rename create setattr };
+}
+
+#============= syslogd_t ==============
+allow syslogd_t tmpfs_t:dir { read write create add_name remove_name };
+allow syslogd_t tmpfs_t:file { rename create setattr };
