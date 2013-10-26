@@ -1,15 +1,15 @@
 
-module auriga-pulseaudio 2.0;
+module auriga-pulseaudio 3.0;
 
 require {
 	type initrc_state_t;
 	type tmpfs_t;
 	type pulseaudio_t;
-	class file read;
-	class file open;
+	class file { getattr open read };
 }
 
 #============= pulseaudio_t ==============
-allow pulseaudio_t initrc_state_t:file read;
+allow pulseaudio_t initrc_state_t:file getattr;
 allow pulseaudio_t initrc_state_t:file open;
+allow pulseaudio_t initrc_state_t:file read;
 allow pulseaudio_t tmpfs_t:file read;
