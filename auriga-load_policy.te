@@ -1,0 +1,10 @@
+module auriga-load_policy 1.0;
+
+require {
+	type devpts_t;
+	type load_policy_t;
+	class chr_file { read write };
+}
+
+#============= load_policy_t ==============
+allow load_policy_t devpts_t:chr_file { read write };
