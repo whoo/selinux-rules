@@ -1,0 +1,10 @@
+module auriga-dmesg 2.0;
+
+require {
+	type devpts_t;
+	type dmesg_t;
+	class chr_file { append getattr read write };
+}
+
+#============= dmesg_t ==============
+allow dmesg_t devpts_t:chr_file { append getattr read write };
