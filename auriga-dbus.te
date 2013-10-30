@@ -1,0 +1,10 @@
+module auriga-dbus 1.0;
+
+require {
+	type system_dbusd_t;
+	type initrc_t;
+	class process sigkill;
+}
+
+#============= system_dbusd_t ==============
+allow system_dbusd_t initrc_t:process sigkill;
