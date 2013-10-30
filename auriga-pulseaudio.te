@@ -1,13 +1,16 @@
 
-module auriga-pulseaudio 5.0;
+module auriga-pulseaudio 6.0;
 
 require {
 	type initrc_state_t;
+	type initrc_t;
 	type tmpfs_t;
 	type pulseaudio_t;
 	class file { getattr open read };
+	class dbus send_msg;
 }
 
 #============= pulseaudio_t ==============
 allow pulseaudio_t initrc_state_t:file { getattr open read };
+allow pulseaudio_t initrc_t:dbus send_msg;
 allow pulseaudio_t tmpfs_t:file { getattr open read };
