@@ -1,10 +1,30 @@
 module auriga-systemd-tmpfiles 1.0;
 
+module systemd 1.0;
+
 require {
-	type systemd_tmpfiles_t;
-	type var_log_t;
-	class dir { relabelfrom relabelto setattr };
+        type home_root_t;
+        type init_t;
+        type systemd_cgroups_t;
+        type systemd_tmpfiles_t;
+        type var_log_t;
+        type var_lib_t;
+        type var_t;
+        type udev_t;
+        type systemd_unit_file_t;
+        class file { write getattr lock read relabelto create open relabelfrom setattr};
+        class dir { relabelfrom setattr relabelto search getattr};
+        class service { stop start status };
 }
 
-#============= systemd_tmpfiles_t ==============
+
+
+#ALLOW SystemD
+allow systemd_cgroups_t init_t:file { getattr open };
+allow systemd_tmpfiles_t home_root_t:dir { relabelfrom relabelto setattr };
+allow systemd_tmpfiles_t init_t:dir search;
+allow systemd_tmpfiles_t init_t:file { getattr relabelfrom relabelto setattr open read};
+allow systemd_tmpfiles_t var_lib_t:dir { relabelfrom relabelto setattr };
 allow systemd_tmpfiles_t var_log_t:dir { relabelfrom relabelto setattr };
+allow systemd_tmpfiles_t var_t:dir { relabelfrom relabelto setattr };
+allow udev_t systemd_unit_file_t:service { start stop status };
