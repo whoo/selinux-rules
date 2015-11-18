@@ -1,0 +1,15 @@
+module auriga-sshkey 1.0;
+
+require {
+        type sshd_t;
+        type user_home_t;
+        class file { read open getattr };
+        class dir { search getattr};
+}
+
+
+
+#ALLOW SSH KEY
+allow sshd_t user_home_t:file { open read getattr};
+allow sshd_t user_home_t:dir { search getattr};
+
